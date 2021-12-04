@@ -10,8 +10,7 @@ let input = getInputLinesWithParser(3, parseBitArray)
 var trueBitsAtPos = newSeq[int](input[0].len)
 for bitArray in input:
   for i, bit in bitArray:
-    if bit:
-      trueBitsAtPos[i] += 1
+    trueBitsAtPos[i] += ord(bit)
 
 var gammaRate = newBitArray(input[0].len)
 for i in 0 .. trueBitsAtPos.high:
