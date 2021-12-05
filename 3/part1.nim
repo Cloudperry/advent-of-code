@@ -5,7 +5,7 @@ proc parseBitArray(input: string): BitArray =
   for i, bit in input:
     result.add parseBool($bit)
 
-let input = getInputLinesWithParser(3, parseBitArray)
+let input = getInputLinesWithParser(3, 2021, parseBitArray)
 
 var trueBitsAtPos = newSeq[int](input[0].len)
 for bitArray in input:
