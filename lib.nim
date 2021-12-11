@@ -1,8 +1,8 @@
 import os, httpclient
-import math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options
-import regex, bitty
-export math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options
-export regex, bitty
+import math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
+import regex, bitty, cligen
+export math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
+export regex, bitty, cligen
 
 type
   AocPart* = range[1 .. 2]
