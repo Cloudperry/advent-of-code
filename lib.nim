@@ -1,8 +1,6 @@
 import os, httpclient
 import math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
-import regex, bitty, cligen
 export math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
-export regex, bitty, cligen
 
 type
   AocPart* = range[1 .. 2]
@@ -39,6 +37,5 @@ proc getInputWithParser*[T](day: AocDay, year: AocYear; parser: proc (input: str
   let inputRaw = getInput(day, year, inputFile)
   result = inputRaw.parser
 
-#TODO: Make day 3 solution be able to use alternate input using inputFile
 #TODO: Add automatic sending (and checking) of answers and make it easy to integrate with cligen arguments
 #TODO: Separate exporting of commonly used libraries into some categories and put them in their own files and rename this file to aocUtils or something

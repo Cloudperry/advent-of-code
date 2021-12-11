@@ -1,10 +1,17 @@
 import ../lib
+import bitty, os
 
 proc parseBitArray(input: string): BitArray =
   result = newBitArray()
   for i, bit in input:
     result.add parseBool($bit)
 
+let inputFile =
+  if paramCount() == 1:
+    paramStr(1)
+  else:
+    ""
+let input = getInputWithParser(3, 2021, parseBitArray2D, inputFile)
 let input = getInputLinesWithParser(3, 2021, parseBitArray)
 
 var trueBitsAtPos = newSeq[int](input[0].len)

@@ -1,4 +1,5 @@
 import ../lib
+import cligen
 
 type 
   Line = object
@@ -17,37 +18,34 @@ iterator points(l: Line; xStep, yStep: int): Point =
     x += xStep
     y += yStep
 
-proc markPoints(l: Line; p: var seq[tuple[p: Point, lineCount: int]]; xs, ys: int) =
+proc markPoints(l: Line; g: var Table[Point, uint8]; xs, ys: int) =
   for x, y in l.points(xs, ys):
-    var pointFound: bool
-    for point in p.mitems:
-      if point.p == (x, y): 
-        pointFound = true
-        point.lineCount += 1
-    if not pointFound:
-      p.add ((x, y), 1)
+    if (x, y) in g:
+      g[(x, y)] += 1
+    else:
+      g[(x, y)] = 1
 
 proc solvePart(part = 1.AocPart, inputFile = "") =
-  var linesOnPoint: seq[tuple[p: Point, lineCount: int]] #Wish I knew of a better way to do sparse 2D seqs... Tried table inside table but couldn't make it work
+  var grid: Table[Point, uint8] #Wish I knew of a better way to do sparse 2D seqs... Tried table inside table but couldn't make it work
   var pointsWithTwoOrMore: int
   let input = getInputLinesWithParser(5, 2021, parser = parseLine, inputFile = inputFile)
   if part == 1:
     for line in input:
       if line.x1 != line.x2 and line.y1 == line.y2:
-        line.markPoints(linesOnPoint, sgn(line.x2 - line.x1), 0)
+        line.markPoints(grid, sgn(line.x2 - line.x1), 0)
       elif line.y1 != line.y2 and line.x1 == line.x2:
-        line.markPoints(linesOnPoint, 0, sgn(line.y2 - line.y1))
+        line.markPoints(grid, 0, sgn(line.y2 - line.y1))
   else:
     for line in input:
       if line.x1 != line.x2 and line.y1 == line.y2:
-        line.markPoints(linesOnPoint, sgn(line.x2 - line.x1), 0)
+        line.markPoints(grid, sgn(line.x2 - line.x1), 0)
       elif line.y1 != line.y2 and line.x1 == line.x2:
-        line.markPoints(linesOnPoint, 0, sgn(line.y2 - line.y1))
+        line.markPoints(grid, 0, sgn(line.y2 - line.y1))
       else:
-        line.markPoints(linesOnPoint, sgn(line.x2 - line.x1), sgn(line.y2 - line.y1))
+        line.markPoints(grid, sgn(line.x2 - line.x1), sgn(line.y2 - line.y1))
 
-  for point in linesOnPoint:
-    if point.lineCount >= 2: pointsWithTwoOrMore += 1
+  for point, lineCount in grid:
+    if lineCount >= 2: pointsWithTwoOrMore += 1
   echo pointsWithTwoOrMore
 
 if isMainModule: dispatch(solvePart)
