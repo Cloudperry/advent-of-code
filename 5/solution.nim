@@ -26,7 +26,7 @@ proc markPoints(l: Line; g: var Table[Point, uint8]; xs, ys: int) =
       g[(x, y)] = 1
 
 proc solvePart(part = 1.AocPart, inputFile = "") =
-  var grid: Table[Point, uint8] #Wish I knew of a better way to do sparse 2D seqs... Tried table inside table but couldn't make it work
+  var grid: Table[Point, uint8]
   var pointsWithTwoOrMore: int
   let input = getInputLinesWithParser(5, 2021, parser = parseLine, inputFile = inputFile)
   if part == 1:
