@@ -1,5 +1,5 @@
 import ../lib
-import cligen
+import cligen, regex
 
 type
   BingoBoard = array[0 .. 4, array[0 .. 4, int]]

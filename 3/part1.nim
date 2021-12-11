@@ -11,8 +11,7 @@ let inputFile =
     paramStr(1)
   else:
     ""
-let input = getInputWithParser(3, 2021, parseBitArray2D, inputFile)
-let input = getInputLinesWithParser(3, 2021, parseBitArray)
+let input = getInputLinesWithParser(3, 2021, parseBitArray, inputFile)
 
 var trueBitsAtPos = newSeq[int](input[0].len)
 for bitArray in input:

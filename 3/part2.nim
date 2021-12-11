@@ -1,4 +1,5 @@
 import ../lib
+import bitty
 import os
 
 var cols, rows: int
