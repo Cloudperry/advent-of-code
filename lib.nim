@@ -1,6 +1,6 @@
 import os, httpclient
-import math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
-export math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm
+import math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm, lenientops
+export math, strutils, strformat, strscans, sequtils, tables, sets, hashes, times, sugar, options, algorithm, lenientops
 
 type
   AocPart* = range[1 .. 2]
