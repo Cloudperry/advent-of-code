@@ -10,6 +10,8 @@ type
 proc getInputIfNotDownloaded(day: AocDay; year: AocYear) =
   if not fileExists("input.txt"):
     var client = newHttpClient()
+    if not fileExists("../sessionCookie"):
+      quit("If you run my solutions without setting an input file, it assumes you have a sessionCookie file at the root of this repo for downloading your input. Provide your sessionCookie or check how to set the input file with --help.")
     let sessionCookie = readFile("../sessionCookie").strip
     client.headers = newHttpHeaders({ "Cookie": fmt"session={sessionCookie}" })
     echo fmt"downloading https://adventofcode.com/{year}/day/{day}/input"
