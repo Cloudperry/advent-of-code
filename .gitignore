@@ -2,3 +2,5 @@
 *
 !*.*
 !*/
+# Ignore bin dir for Advent of code 2020
+bin/
